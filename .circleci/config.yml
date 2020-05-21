@@ -8,9 +8,15 @@ jobs:
       - run:
           command: az login -u andresram@unisabana.edu.co -p APFol9824XD
           name: Sign In to Azure CLI
+      - azure-aks/update-kubeconfig-with-credentials:
+          cluster-name: cluster
+          install-kubectl: true
+          perform-login: true
+          resource-group: Ubuntu
       - run:
-          command: az aks get-credentials --resource-group Ubuntu --name cluster
-          name: Connect to cluster using kubectl
+          command: |
+            kubectl get services
+          name: Test cluster
       - run:
           command: kubectl config get-contexts
           name: Show all the clusters
