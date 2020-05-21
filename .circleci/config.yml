@@ -17,7 +17,7 @@ jobs:
           command: kubectl apply -f deployment.yaml
           name: Apply new deployment.yaml
       - run:
-          command: kubectl show deployments
+          command: kubectl get deployments
           name: Show deployments
       - run:
           command: ls
