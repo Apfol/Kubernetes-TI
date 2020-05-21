@@ -16,7 +16,7 @@ jobs:
       - run:
           command: kubectl config get-contexts
           name: Show all the clusters
-          - run:
+      - run:
           command: ls
 workflows:
   example-workflow:
