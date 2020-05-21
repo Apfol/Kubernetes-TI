@@ -14,7 +14,13 @@ jobs:
     steps:
       - run:
           command: az login -u andresram@unisabana.edu.co -p APFol9824XD
-          name: List resources of tenant stored as `AZURE_SP_TENANT` env var
+          name: Sign In to Azure CLI
+      - run:
+          command: az aks get-credentials --resource-group Ubuntu --name cluster
+          name: Connect to cluster using kubectl
+      - run:
+          command: kubectl config get-contexts
+          name: Show all the clusters
 workflows:
   example-workflow:
     jobs:
