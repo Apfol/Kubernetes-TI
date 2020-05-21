@@ -5,6 +5,7 @@ jobs:
   login-to-azure:
     executor: azure-aks/azure-docker
     steps:
+      - checkout
       - run:
           command: az login -u andresram@unisabana.edu.co -p APFol9824XD
           name: Sign In to Azure CLI
@@ -13,12 +14,10 @@ jobs:
           install-kubectl: true
           resource-group: Ubuntu
       - run:
-          command: |
-            kubectl get services
-          name: Test cluster
-      - run:
           command: kubectl config get-contexts
           name: Show all the clusters
+          - run:
+          command: ls
 workflows:
   example-workflow:
     jobs:
