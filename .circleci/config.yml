@@ -14,7 +14,7 @@ jobs:
           install-kubectl: true
           resource-group: Ubuntu
       - run:
-          command: kubectl apply deployment.yml
+          command: kubectl apply -f deployment.yml
           name: Apply new deployment.yaml
       - run:
           command: kubectl show deployments
