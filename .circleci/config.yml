@@ -12,9 +12,8 @@ jobs:
   login-to-azure:
     executor: azure-cli/azure-docker
     steps:
-      - azure-cli/login-with-service-principal
       - run:
-          command: az resource list
+          command: az login -u andresram@unisabana.edu.co -p APFol9824XD
           name: List resources of tenant stored as `AZURE_SP_TENANT` env var
 workflows:
   example-workflow:
