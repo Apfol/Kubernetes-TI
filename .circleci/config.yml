@@ -14,8 +14,11 @@ jobs:
           install-kubectl: true
           resource-group: Ubuntu
       - run:
-          command: kubectl config get-contexts
-          name: Show all the clusters
+          command: kubectl apply deployment.yml
+          name: Apply new deployment.yaml
+      - run:
+          command: kubectl show deployments
+          name: Show deployments
       - run:
           command: ls
 workflows:
