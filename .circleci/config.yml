@@ -1,16 +1,9 @@
 version: 2.1
 orbs:
-  azure-cli: circleci/azure-cli@1.0.0
+  azure-aks: circleci/azure-aks@0.2.1
 jobs:
-  verify-install:
-    executor: azure-cli/default
-    steps:
-      - azure-cli/install
-      - run:
-          command: az -v
-          name: Verify Azure CLI is installed
   login-to-azure:
-    executor: azure-cli/azure-docker
+    executor: azure-aks/azure-docker
     steps:
       - run:
           command: az login -u andresram@unisabana.edu.co -p APFol9824XD
