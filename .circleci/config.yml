@@ -14,13 +14,13 @@ jobs:
           install-kubectl: true
           resource-group: Ubuntu
       - run:
-          command: kubectl apply -f web1.yaml
+          command: kubectl apply -f web1.yaml --namespace ingress-basic
           name: Apply new deployment to web 1
       - run:
-          command: kubectl apply -f web2.yaml
+          command: kubectl apply -f web2.yaml --namespace ingress-basic
           name: Apply new deployment to web 2
       - run:
-          command: kubectl apply -f web-default.yaml
+          command: kubectl apply -f web-default.yaml --namespace ingress-basic
           name: Apply new deployment to web default
       - run:
           command: ls
