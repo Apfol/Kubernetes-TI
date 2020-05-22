@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: default-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: default-web
+  template:
+    metadata:
+      labels:
+        app: default-web
+    spec:
+      containers:
+      - name: default-web
+        image: neilpeterson/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        env:
+          - name: TITLE
+            value: "Parcial Final"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: default-web
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: default-web

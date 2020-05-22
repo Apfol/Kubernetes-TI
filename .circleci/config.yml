@@ -14,11 +14,14 @@ jobs:
           install-kubectl: true
           resource-group: Ubuntu
       - run:
-          command: kubectl apply -f deployment.yaml
-          name: Apply new deployment.yaml
+          command: kubectl apply -f web1.yaml
+          name: Apply new deployment to web 1
       - run:
-          command: kubectl get deployments
-          name: Show deployments
+          command: kubectl apply -f web2.yaml
+          name: Apply new deployment to web 2
+      - run:
+          command: kubectl apply -f web-default.yaml
+          name: Apply new deployment to web default
       - run:
           command: ls
 workflows:
