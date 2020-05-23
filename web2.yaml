@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: web2
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: web2
@@ -14,12 +14,16 @@ spec:
     spec:
       containers:
       - name: web2
-        image: neilpeterson/aks-helloworld:v1
+        image: nginx
+        volumeMounts:
+          - name: page-vol
+            mountPath: /usr/share/nginx/html
         ports:
         - containerPort: 80
-        env:
-          - name: TITLE
-            value: "Web2"
+      volumes:
+        - name: page-vol
+          configMap:
+            name: web2-page
 ---
 apiVersion: v1
 kind: Service
